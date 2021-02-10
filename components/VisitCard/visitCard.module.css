@@ -1,0 +1,169 @@
+.cardContainer {
+    height: 100%;
+    position: relative;
+    width: 100%;
+}
+
+.cardPreview {
+    align-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: space-evenly;
+    transition: width 500ms ease-out;
+    width: 100%;
+}
+.cardPreview.squeezed {
+    width: 75%;
+}
+
+.card {
+    box-shadow: 3px 15px 15px #333;
+    border-radius: 3px;
+    display: block;
+    position: relative;
+}
+
+.cardData {
+    left: 40%;
+    position: absolute;
+    right: 10px;
+    text-align: left;
+    top: 40%;
+}
+
+.cardData p {
+    margin: 5px 0;
+}
+
+.cardData .cardOwner {
+    font-size: 1.1em;
+}
+
+.cardData .contact {
+    font-size: 0.8em;
+}
+
+.cardData .jobPosition {
+    font-style: italic;
+}
+
+.cardFront {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.cardFront::before {
+    content: 'Front';
+    position: absolute;
+    bottom: 100%;
+    left: 0;
+}
+
+.cardFront .logo {
+    display: block;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.cardFront .company {
+    max-width: 100%;
+    padding: 10px;
+    text-align: center;
+    word-wrap: anywhere;
+}
+
+.cardBack .company {
+    text-align: center;
+    word-wrap: anywhere;
+}
+
+.cardBack::before {
+    content: 'Back';
+    position: absolute;
+    bottom: 100%;
+    left: 0;
+}
+
+.cardSettings {
+    box-sizing: border-box;
+    height: 100%;
+    left: 100%;
+    position: absolute;
+    padding: 5px;
+    top: 0;
+    transition: left 500ms ease-out;
+    width: 25%;
+}
+.cardSettings.open {
+    box-shadow: 1px 0px 7px #333;
+    left: 75%;
+}
+.cardSettings > div {
+    height: 100%;
+    overflow-y: auto;
+}
+
+.cardSettings input:not([type="checkbox"]),
+.cardSettings button {
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    box-sizing: border-box;
+    padding: 5px;
+    width: 100%;
+}
+
+.cardSettings .cardLoadSave {
+    text-align: center;
+}
+
+.toggleSettings {
+    align-items: center;
+    cursor: pointer;
+    display: flex;
+    height: 40px;
+    justify-content: center;
+    position: absolute;
+    right: calc(100% + 10px);
+    top: 10px;
+    transform: rotate(0deg);
+    transition: all 500ms ease-in;
+    width: 40px;
+}
+.toggleSettings:hover {
+    transform: rotate(90deg);
+}
+
+.visitCardList {
+    background-color: #fff;
+    border: solid 1px #000;
+    bottom: 10%;
+    display: flex;
+    left: 10%;
+    position: absolute;
+    right: 10%;
+    top: 10%;
+    justify-content: space-evenly;
+    flex-direction: column;
+    align-items: center;
+}
+
+.visitCardLoad {
+    box-shadow: 3px 3px 3px #333;
+    padding: 10px 15px;
+    text-align: center;
+}
+
+.popupContainer {
+    bottom: 0;
+    cursor: pointer;
+    left: 0;
+    position: fixed;
+    right: 0;
+    top: 0;
+}

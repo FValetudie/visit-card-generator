@@ -1,0 +1,18 @@
+.colorPickerContainer {
+    position: relative;
+    user-select: none;
+    margin: 0 5px;
+    border: solid 1px #333;
+    border-radius: 50%;
+    cursor: pointer;
+    display: inline-block;
+    height: 15px;
+    width: 15px;
+}
+
+.colorPicker {
+    top: 50%;
+    left: -100%;
+    position: absolute;
+    z-index: 160;
+}
