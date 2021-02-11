@@ -1,6 +1,6 @@
 import React, { useCallback, useRef, useState } from "react";
 import cn from "classnames";
-import { Settings, Share } from "@material-ui/icons";
+import { Restore, Save, Settings, Share } from "@material-ui/icons";
 
 import styles from './visitCard.module.css'
 import { useCardContext } from "./CardContext";
@@ -179,8 +179,8 @@ export default function CardSettings() {
                 </div>
                 <div className={styles.cardLoadSave}>
                     <div className="half"><input ref={visitCardNameRef} type="text" name="visitCardName" placeholder="Visit card name" /></div>
-                    <div className="half"><button onClick={handleSave}>Save visit card</button></div>
-                    <div className="half"><button onClick={toggleVisitCardList}>Load a visit card</button></div>
+                    <div className="half"><button onClick={handleSave}><Save fontSize="inherit" /> Save visit card</button></div>
+                    <div className="half"><button onClick={toggleVisitCardList}><Restore fontSize="inherit" /> Load a visit card</button></div>
                     {displayVisitCardList && <CardList onClose={toggleVisitCardList} onSelect={handleLoad} isDisplayed={displayVisitCardList} />}
                 </div>
                 <div><button onClick={handleShare}><Share fontSize="inherit" /> Share</button></div>

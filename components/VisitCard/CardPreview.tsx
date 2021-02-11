@@ -32,7 +32,7 @@ export default function CardPreview({ visitCard }: { visitCard?: string }) {
         if (visitCard && visitCard.length > 0) {
             openSharedVisitCard(visitCard, visitCardCtx);
         }
-    }, []);
+    }, [visitCard]);
 
     return (
         <div className={cn(styles.cardPreview, { [styles.squeezed]: isSettingsOpen, [styles.showHelp]: !visitCard })}>

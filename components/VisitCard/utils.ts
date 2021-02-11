@@ -5,11 +5,12 @@ const localStorageVisitCard = 'visitCards';
 export const visitCardShareLink = (vCard: ICardContext) => {
     const urlParam = new URLSearchParams();
     const serializedVCard = serializeVisitCard(vCard);
-    // JSONCrush ? LZMA ? Base64 ?
     const compressedVCard = btoa(serializedVCard);
 
     urlParam.set('visitCard', compressedVCard);
-    return `http://localhost:3000/share?${urlParam.toString()}`;
+    urlParam.set('share', '1');
+
+    return `http://localhost:3000/?${urlParam.toString()}`;
 };
 
 export const openSharedVisitCard = (vCard: string, visitCardCtx: ICardContext) => {

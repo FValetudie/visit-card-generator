@@ -8,7 +8,7 @@ import CardSettings from './CardSettings';
 import styles from './visitCard.module.css'
 
 interface VisitCardProps {
-    displayOnly: boolean;
+    displayOnly?: boolean;
     visitCard?: string;
 }
 
