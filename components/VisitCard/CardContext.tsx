@@ -40,7 +40,7 @@ export function CardContextProvider({ children }: { children: ReactNode }) {
         const width = Math.min(style.width, window.innerWidth - 20);
         const height = width * (style.height / style.width);
         return { height, width, background };
-    }, [isGradient, style, gradientAngle, window.innerWidth]);
+    }, [isGradient, style, gradientAngle]);
 
     const toggleIsSettingOpen = useCallback(() => {
         setIsOpenSettings(!isSettingsOpen);
