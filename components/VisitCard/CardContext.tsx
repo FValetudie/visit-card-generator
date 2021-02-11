@@ -1,4 +1,4 @@
-import React, { createContext, ReactNode, useCallback, useContext, useMemo, useState } from "react";
+import React, { createContext, ReactNode, useCallback, useContext, useEffect, useMemo, useState } from "react";
 
 import { ICardContext, IFontStyles } from "./interfaces/ICardContext";
 import { ICardStyle } from "./interfaces/ICardStyle";
@@ -18,6 +18,7 @@ export const useCardContext = () => {
 }
 
 export function CardContextProvider({ children }: { children: ReactNode }) {
+    const [windowWidth, setWindowWidth] = useState<number>(0);
     const [isGradient, setIsGradient] = useState(false);
     const [gradientAngle, setGradientAngle] = useState(0);
     const [data, setData] = useState<ICardPersonalData>({});
@@ -33,14 +34,19 @@ export function CardContextProvider({ children }: { children: ReactNode }) {
         twitter: defaultFontStyle, company: { color: '#a00' }, position: defaultFontStyle,
     });
 
+    useEffect(() => {
+        setWindowWidth(window.innerWidth);
+        window.onresize = () => setWindowWidth(window.innerWidth);
+    }, []);
+
     const computedStyle = useMemo(() => {
         const background = isGradient && style.bgColor2
             ? `linear-gradient(${gradientAngle}deg, ${style.bgColor1} 0%, ${style.bgColor2} 100%)`
             : style.bgColor1;
-        const width = Math.min(style.width, window.innerWidth - 20);
+        const width = Math.min(style.width, windowWidth - 20);
         const height = width * (style.height / style.width);
         return { height, width, background };
-    }, [isGradient, style, gradientAngle]);
+    }, [isGradient, style, gradientAngle, windowWidth]);
 
     const toggleIsSettingOpen = useCallback(() => {
         setIsOpenSettings(!isSettingsOpen);

@@ -20,8 +20,8 @@ export default function CardPreview({ visitCard }: { visitCard?: string }) {
 
     const companyFontSize = useMemo(
         () => Math.min(
-            Math.max(1 / (company?.length ?? 2) * style.width, 20),
-            0.5 * style.height,
+            Math.max(0.08 / (company?.length ?? 2) * style.width, 1),
+            0.025 * style.height,
         ),
         [company, style.height, style.width],
     );
@@ -42,7 +42,7 @@ export default function CardPreview({ visitCard }: { visitCard?: string }) {
                         <div className={styles.logo} style={{ height: logoSize, width: logoSize, backgroundImage: `url(${logo})` }}>
                         </div>
                     )}
-                    <div className={styles.company} style={{ fontSize: `${companyFontSize}px` }}>
+                    <div className={styles.company} style={{ fontSize: `${companyFontSize}em` }}>
                         <span style={fontStyles?.company}>{company}</span>
                     </div>
                 </div>
@@ -51,7 +51,7 @@ export default function CardPreview({ visitCard }: { visitCard?: string }) {
             )}
             {isCardEdited && (
                 <div className={cn(styles.card, styles.cardBack)} style={computedStyle}>
-                    <p className={styles.company} style={{ fontSize: `${3 * companyFontSize / 5}px` }}>
+                    <p className={styles.company} style={{ fontSize: `${3 * companyFontSize / 5}em` }}>
                         <span style={fontStyles?.company}>{company}</span>
                     </p>
                     <div className={styles.cardData}>
