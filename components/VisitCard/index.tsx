@@ -1,5 +1,6 @@
 
 import React from "react";
+import { ToastProvider } from "react-toast-notifications";
 
 import { CardContextProvider } from './CardContext';
 import CardPreview from './CardPreview';
@@ -14,11 +15,13 @@ interface VisitCardProps {
 
 export default function VisitCard({ displayOnly = false, visitCard }: VisitCardProps) {
     return (
-        <div className={styles.cardContainer}>
-            <CardContextProvider>
-                <CardPreview visitCard={visitCard} />
-                {!displayOnly && <CardSettings />}
-            </CardContextProvider>
-        </div>
+        <ToastProvider autoDismiss={true} autoDismissTimeout={8000} placement="top-left">
+            <div className={styles.cardContainer}>
+                <CardContextProvider>
+                    <CardPreview visitCard={visitCard} />
+                    {!displayOnly && <CardSettings />}
+                </CardContextProvider>
+            </div>
+        </ToastProvider>
     );
 }

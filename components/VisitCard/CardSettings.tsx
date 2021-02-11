@@ -1,6 +1,7 @@
 import React, { useCallback } from "react";
 import cn from "classnames";
 import { Settings, Share } from "@material-ui/icons";
+import { useToasts } from "react-toast-notifications";
 
 import { useCardContext } from "./CardContext";
 import { visitCardShareLink } from "./utils";
@@ -11,6 +12,7 @@ import CardPersonalData from "./components/CardPersonalData";
 import styles from './visitCard.module.css'
 
 export default function CardSettings() {
+    const { addToast } = useToasts();
     const visitCardCtx = useCardContext();
     const {
         isSettingsOpen,
@@ -20,7 +22,7 @@ export default function CardSettings() {
     const handleShare = useCallback(async () => {
         const shareUrl = visitCardShareLink(visitCardCtx);
         await navigator.clipboard.writeText(shareUrl);
-        console.log(`Copied to clipboard: ${shareUrl}`);
+        addToast('Share link saved to clipboard', { appearance: 'info' });
     }, [visitCardCtx]);
 
     // useEffect(() => {

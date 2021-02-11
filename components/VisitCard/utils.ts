@@ -42,7 +42,6 @@ export const saveVisitCard = (visitCardName: string, { isGradient, gradientAngle
         fontStyles,
         logo,
     };
-    console.info(`Save visit card "${visitCardName}"`);
     localStorage.setItem(localStorageVisitCard, JSON.stringify(visitCards));
 };
 
@@ -80,13 +79,14 @@ export const loadVisitCard = (visitCardName: string, context: ICardContext) => {
     console.log(`Try loading ${visitCardName}`);
     const vCard = localStorage.getItem(localStorageVisitCard);
     if (!vCard) {
-        console.log('Unable to find specified visitCard');
-        return;
+        throw new Error('Unable to find specified visitCard');
     }
     const visitCards = JSON.parse(vCard);
     if (visitCards[visitCardName]) {
         const visitCard = visitCards[visitCardName];
         loadedVisitCardToContext(visitCard, context)
+    } else {
+        throw new Error(`Unable to find specified visitCard "${visitCardName}"`);
     }
 };
 

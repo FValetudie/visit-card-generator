@@ -1,5 +1,6 @@
 import React, { useCallback, useRef, useState } from "react";
 import { Restore, Save } from "@material-ui/icons";
+import { useToasts } from "react-toast-notifications";
 
 import { loadVisitCard, saveVisitCard } from "../utils";
 import { useCardContext } from "../CardContext";
@@ -12,6 +13,7 @@ export default function CardLoadSave() {
     const visitCardNameRef = useRef<HTMLInputElement>(null);
     const [displayVisitCardList, setDisplayVisitCardList] = useState<boolean>(false);
     const visitCardCtx = useCardContext();
+    const { addToast } = useToasts();
 
     const toggleVisitCardList = useCallback(() => {
         setDisplayVisitCardList(!displayVisitCardList);
@@ -22,16 +24,26 @@ export default function CardLoadSave() {
         const vcName = visitCardNameRef?.current?.value;
         if (vcName) {
             saveVisitCard(vcName, visitCardCtx);
+            addToast('Visit card saved', { appearance: 'success' });
+        } else {
+            addToast('Visit card name mandatory to save a visit card', { appearance: 'error' });
         }
     }, [visitCardNameRef, visitCardCtx]);
 
     const handleLoad = useCallback((vcName) => {
         if (vcName) {
-            loadVisitCard(vcName, visitCardCtx);
-            setDisplayVisitCardList(false);
-            if (visitCardNameRef?.current) {
-                visitCardNameRef.current.value = vcName;
+            try {
+                loadVisitCard(vcName, visitCardCtx);
+                setDisplayVisitCardList(false);
+                if (visitCardNameRef?.current) {
+                    visitCardNameRef.current.value = vcName;
+                }
+                addToast('Visit card loaded', { appearance: 'success' });
+            } catch (e) {
+                addToast(e, { appearance: 'error' });
             }
+        } else {
+            addToast('Please choose a valid visit card to load', { appearance: 'error' });
         }
     }, [visitCardCtx, visitCardNameRef]);
 

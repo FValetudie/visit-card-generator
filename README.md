@@ -68,5 +68,8 @@ I used this library to simplify the use of classs for my styles. Used with nextJ
 [material.io](https://material.io/) is a typical design and icon library with thousand of icons available.
 
 ### react-color
-NPM package [react-color](https://github.com/casesandberg/react-color) is an easy way to add a color picker to a project.
+Package [react-color](https://github.com/casesandberg/react-color) is an easy way to add a color picker to a project.
 I created a container to allow displaying the current color and showing the colorpicker only when needed.
+
+### react-toast-notifications
+Package [react-toast-notifications](https://github.com/jossmac/react-toast-notifications) is an implementation of toast-style notifications
