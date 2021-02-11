@@ -1,6 +1,7 @@
 # Visit Card Generator
 
 Author: Floris VALETUDIE
+
 Date: 2021-02-10
 
 ## How to launch the project
@@ -32,8 +33,11 @@ For a quick start, you can also test this [example visit card](http://localhost:
 
 ### URL shortener for sharing
 First improvement I would like to implement would be a prettier share URL.
+
 To do that, the first step could be using a compression method to get a shorter visit card data to insert in the URL. Already existing librabries can help achieve this : [JSONCrush](https://github.com/KilledByAPixel/JSONCrush), [json-url](https://github.com/masotime/json-url) using lzma compression, etc.
+
 Those compression methods can reduce the size of the data, but the gain stay marginal. Therefore, the actual solution to this problem would be to use  a URL shortener service. Some of them provide APIs to automatically create a short link (bitly, cuttly, tinyurl, etc.).
+
 My choice would probably be google's [Firebase Dynamic Link](https://firebase.google.com/docs/dynamic-links/rest) which provides a rich API and monitoring.
 
 ### localStorage
