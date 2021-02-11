@@ -6,6 +6,8 @@ Date: 2021-02-10
 
 ## How to launch the project
 
+The app is already deployed on vercel, if you wish to try it : https://visit-card-generator.vercel.app/. Otherwise, follow the steps described thereafter.
+
 ### Clone the repository
 ```
 git clone git@github.com:FValetudie/visit-card-generator.git
