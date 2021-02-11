@@ -43,10 +43,14 @@ It is used to save the visit cards.
 It is extremely easy to use, but could probably be replaced with [IndexedDB](https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API/Using_IndexedDB) which handles objects better and removes the necessity to serialize (stringify) our objects.
 
 ## Other ideas
+### Text size
+Next to the color picker, a basic input allowing to change the font-size
 ### Persistent visit card
 I would also like to finish my failed attempt to have an automatic save of the current visit card that could be retrieved even after a refresh of the page. The same concept use to save/load visit cards could be used.
 ### Background images
 Allowing the user to choose a provided background image, or even to upload one (as done for the logo) would probably be simple to do. I did not take the time to implement it during this exercise, however. It would also be prefereable to have short URLs before as the image would be added to the visit card data.
+### Tutorial
+A simple tutorial showing the user where to open the settings, how to change colors, where to save, load or share a visit card, etc.
 
 ## What I would do differently is I started over
 

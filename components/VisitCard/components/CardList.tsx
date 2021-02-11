@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react"
-import { listVisitCards } from "./utils";
 
-import styles from './visitCard.module.css'
+import { listVisitCards } from "../utils";
+
+import styles from '../visitCard.module.css'
 
 interface CardListProps {
     onClose: () => void;
