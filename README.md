@@ -47,6 +47,8 @@ It is used to save the visit cards.
 It is extremely easy to use, but could probably be replaced with [IndexedDB](https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API/Using_IndexedDB) which handles objects better and removes the necessity to serialize (stringify) our objects.
 
 ## Other ideas
+### In-place editing
+Directly allow the user to edit their texts on the visit card could be a lighter experience. It would also leave only the styles to edit in the settings (though some could probably also be edited right next to the text: options visible on focus, for example).
 ### Text size
 Next to the color picker, a basic input allowing to change the font-size
 ### Persistent visit card
