@@ -7,13 +7,17 @@ import CardSettings from './CardSettings';
 
 import styles from './visitCard.module.css'
 
+interface VisitCardProps {
+    displayOnly: boolean;
+    visitCard?: string;
+}
 
-export default function VisitCard() {
+export default function VisitCard({ displayOnly = false, visitCard }: VisitCardProps) {
     return (
         <div className={styles.cardContainer}>
             <CardContextProvider>
-                <CardPreview />
-                <CardSettings />
+                <CardPreview visitCard={visitCard} />
+                {!displayOnly && <CardSettings />}
             </CardContextProvider>
         </div>
     );

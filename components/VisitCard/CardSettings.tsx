@@ -1,11 +1,11 @@
 import React, { useCallback, useRef, useState } from "react";
 import cn from "classnames";
-import { Settings } from "@material-ui/icons";
+import { Settings, Share } from "@material-ui/icons";
 
 import styles from './visitCard.module.css'
 import { useCardContext } from "./CardContext";
 import ColorPicker from "../ColorPicker/ColorPicker";
-import { loadVisitCard, saveVisitCard } from "./utils";
+import { loadVisitCard, saveVisitCard, visitCardShareLink } from "./utils";
 import CardList from "./CardList";
 
 export default function CardSettings() {
@@ -29,6 +29,7 @@ export default function CardSettings() {
         setFontStyles,
         setLogo,
     } = visitCardCtx;
+
     const handleGradientChange = useCallback(() => {
         setIsGradient(isGradientRef.current?.checked ?? false);
     }, [setIsGradient, isGradient]);
@@ -60,7 +61,6 @@ export default function CardSettings() {
             const file = files[0];
             const reader = new FileReader();
             reader.addEventListener('load', (e) => {
-                // console.log(e);
                 if (typeof e?.target?.result === 'string') {
                     setLogo(e?.target?.result);
                 }
@@ -68,6 +68,12 @@ export default function CardSettings() {
             reader.readAsDataURL(file);
         }
     }, [fileInputRef]);
+
+    const handleShare = useCallback(async () => {
+        const shareUrl = visitCardShareLink(visitCardCtx);
+        await navigator.clipboard.writeText(shareUrl);
+        console.log(`Copied to clipboard: ${shareUrl}`);
+    }, [visitCardCtx]);
 
     // useEffect(() => {
     //     console.info('Setting up autosave');
@@ -177,6 +183,7 @@ export default function CardSettings() {
                     <div className="half"><button onClick={toggleVisitCardList}>Load a visit card</button></div>
                     {displayVisitCardList && <CardList onClose={toggleVisitCardList} onSelect={handleLoad} isDisplayed={displayVisitCardList} />}
                 </div>
+                <div><button onClick={handleShare}><Share fontSize="inherit" /> Share</button></div>
             </div>
         </div>
     )

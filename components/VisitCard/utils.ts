@@ -2,6 +2,33 @@ import { ICardContext } from "./interfaces/ICardContext";
 
 const localStorageVisitCard = 'visitCards';
 
+export const visitCardShareLink = (vCard: ICardContext) => {
+    const urlParam = new URLSearchParams();
+    const serializedVCard = serializeVisitCard(vCard);
+    // JSONCrush ? LZMA ? Base64 ?
+    const compressedVCard = btoa(serializedVCard);
+
+    urlParam.set('visitCard', compressedVCard);
+    return `http://localhost:3000/share?${urlParam.toString()}`;
+};
+
+export const openSharedVisitCard = (vCard: string, visitCardCtx: ICardContext) => {
+    const uncompressedVCard = atob(vCard);
+    const deserializedVCard = JSON.parse(uncompressedVCard);
+    loadedVisitCardToContext(deserializedVCard, visitCardCtx);
+};
+
+export const serializeVisitCard = ({ isGradient, gradientAngle, data, style, fontStyles, logo }: ICardContext) => {
+    return JSON.stringify({
+        isGradient,
+        gradientAngle,
+        data,
+        style,
+        fontStyles,
+        logo,
+    });
+};
+
 export const saveVisitCard = (visitCardName: string, { isGradient, gradientAngle, data, style, fontStyles, logo }: ICardContext) => {
     const vCards = localStorage.getItem(localStorageVisitCard);
     const visitCards = vCards ? JSON.parse(vCards) : {};
@@ -31,7 +58,6 @@ export const saveVisitCard = (visitCardName: string, { isGradient, gradientAngle
 // }
 
 const loadedVisitCardToContext = (visitCard: any, context: ICardContext) => {
-    console.log(context);
     context.updateStyle(visitCard.style);
     context.updateData(visitCard.data);
     context.setFontStyles(visitCard.fontStyles);

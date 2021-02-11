@@ -56,7 +56,7 @@
     justify-content: center;
 }
 
-.cardFront::before {
+.showHelp .cardFront::before {
     content: 'Front';
     position: absolute;
     bottom: 100%;
@@ -82,7 +82,7 @@
     word-wrap: anywhere;
 }
 
-.cardBack::before {
+.showHelp .cardBack::before {
     content: 'Back';
     position: absolute;
     bottom: 100%;

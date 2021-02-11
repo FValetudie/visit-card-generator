@@ -1,11 +1,13 @@
-import React, { useMemo } from 'react'
+import React, { useEffect, useMemo } from 'react'
 import cn from "classnames"
 
 import styles from './visitCard.module.css'
 import { useCardContext } from './CardContext';
 import { Email, Phone, Twitter } from '@material-ui/icons';
+import { openSharedVisitCard } from './utils';
 
-export default function CardPreview() {
+export default function CardPreview({ visitCard }: { visitCard?: string }) {
+    const visitCardCtx = useCardContext();
     const {
         data: { company, firstname, lastname, position, email, twitter, phone },
         logo,
@@ -13,7 +15,7 @@ export default function CardPreview() {
         computedStyle,
         fontStyles,
         isSettingsOpen,
-    } = useCardContext();
+    } = visitCardCtx;
     const isCardEdited = useMemo(() => company || firstname || lastname, [company, firstname, lastname]);
 
     const companyFontSize = useMemo(
@@ -26,8 +28,14 @@ export default function CardPreview() {
 
     const logoSize = useMemo(() => style.height / 4, [style.height]);
 
+    useEffect(() => {
+        if (visitCard && visitCard.length > 0) {
+            openSharedVisitCard(visitCard, visitCardCtx);
+        }
+    }, []);
+
     return (
-        <div className={cn(styles.cardPreview, { [styles.squeezed]: isSettingsOpen })}>
+        <div className={cn(styles.cardPreview, { [styles.squeezed]: isSettingsOpen, [styles.showHelp]: !visitCard })}>
             {isCardEdited ? (
                 <div className={cn(styles.card, styles.cardFront)} style={computedStyle}>
                     {logo && logo !== '' && (

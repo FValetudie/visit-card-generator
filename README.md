@@ -12,6 +12,9 @@ yarn dev
 
 ## Improvements
 
+### url shortener for sharing
+URL shortener or FDL
+
 ## Other ideas
 
 ## What I would do differently is I started over
