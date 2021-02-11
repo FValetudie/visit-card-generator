@@ -189,3 +189,16 @@
     right: 0;
     top: 0;
 }
+
+@media screen and (orientation: portrait) and (max-width: 900px) {
+    .cardSettings {
+        width: 100%;
+        background-color: #e3ebff;
+    }
+    .cardSettings.open {
+        left: 0;
+    }
+    .cardSettings.open .toggleSettings {
+        right: 88%;
+    }
+}

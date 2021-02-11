@@ -37,8 +37,10 @@ export function CardContextProvider({ children }: { children: ReactNode }) {
         const background = isGradient && style.bgColor2
             ? `linear-gradient(${gradientAngle}deg, ${style.bgColor1} 0%, ${style.bgColor2} 100%)`
             : style.bgColor1;
-        return { height: style.height, width: style.width, background };
-    }, [isGradient, style, gradientAngle]);
+        const width = Math.min(style.width, window.innerWidth - 20);
+        const height = width * (style.height / style.width);
+        return { height, width, background };
+    }, [isGradient, style, gradientAngle, window.innerWidth]);
 
     const toggleIsSettingOpen = useCallback(() => {
         setIsOpenSettings(!isSettingsOpen);
