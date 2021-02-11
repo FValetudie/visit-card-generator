@@ -14,6 +14,7 @@ export default function CardPersonalData() {
 
     return (
         <div className="card-personal-data">
+            <h2>Visit card owner data</h2>
             <div>
                 <label htmlFor="firstname">Firstname</label>{' '}
                 <ColorPicker

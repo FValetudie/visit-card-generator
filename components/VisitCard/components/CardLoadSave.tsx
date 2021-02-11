@@ -37,6 +37,7 @@ export default function CardLoadSave() {
 
     return (
         <div className={styles.cardLoadSave}>
+            <h2>Miscellaneous</h2>
             <div className="half"><input ref={visitCardNameRef} type="text" name="visitCardName" placeholder="Visit card name" /></div>
             <div className="half"><button onClick={handleSave}><Save fontSize="inherit" /> Save visit card</button></div>
             <div className="half"><button onClick={toggleVisitCardList}><Restore fontSize="inherit" /> Load a visit card</button></div>

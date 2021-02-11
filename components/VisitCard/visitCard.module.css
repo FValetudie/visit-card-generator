@@ -80,6 +80,7 @@
 .cardBack .company {
     text-align: center;
     word-wrap: anywhere;
+    margin: 10px;
 }
 
 .showHelp .cardBack::before {
@@ -120,6 +121,19 @@
 
 .cardSettings .cardLoadSave {
     text-align: center;
+}
+
+.cardSettings h2 {
+    margin-bottom: 5px;
+    text-align: center;
+}
+
+.cardSettings > div > div {
+    border-bottom: dashed 2px #e3e3e3;
+}
+
+.cardSettings > div > div > div {
+    margin-bottom: 7px;
 }
 
 .toggleSettings {

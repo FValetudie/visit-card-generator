@@ -51,7 +51,7 @@ export default function CardPreview({ visitCard }: { visitCard?: string }) {
             )}
             {isCardEdited && (
                 <div className={cn(styles.card, styles.cardBack)} style={computedStyle}>
-                    <p className={styles.company} style={{ fontSize: `${companyFontSize / 2}px` }}>
+                    <p className={styles.company} style={{ fontSize: `${3 * companyFontSize / 5}px` }}>
                         <span style={fontStyles?.company}>{company}</span>
                     </p>
                     <div className={styles.cardData}>
