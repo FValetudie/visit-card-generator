@@ -143,8 +143,8 @@
     background-color: #fff;
     border: solid 1px #000;
     bottom: 10%;
-    display: flex;
     left: 10%;
+    overflow-y: auto;
     position: absolute;
     right: 10%;
     top: 10%;
@@ -153,10 +153,18 @@
     align-items: center;
 }
 
+.visitCardList input[type="text"] {
+    border: solid 1px #333;
+    border-radius: 3px;
+    width: 150px;
+}
+
 .visitCardLoad {
     box-shadow: 3px 3px 3px #333;
+    display: inline-block;
     padding: 10px 15px;
     text-align: center;
+    margin: 10px;
 }
 
 .popupContainer {

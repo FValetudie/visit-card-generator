@@ -51,6 +51,10 @@ I would also like to finish my failed attempt to have an automatic save of the c
 Allowing the user to choose a provided background image, or even to upload one (as done for the logo) would probably be simple to do. I did not take the time to implement it during this exercise, however. It would also be prefereable to have short URLs before as the image would be added to the visit card data.
 ### Tutorial
 A simple tutorial showing the user where to open the settings, how to change colors, where to save, load or share a visit card, etc.
+### Prettier visit card load popup
+Each visit card available could have its own preview. This would need to save an image version of the visitCard, or creating modulable card preview
+
+Also, this popup could be more user-friendly, prettier, better with user experience...
 
 ## What I would do differently is I started over
 
