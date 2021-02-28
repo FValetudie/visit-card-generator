@@ -58,18 +58,6 @@ export const saveVisitCard = (
   localStorage.setItem(localStorageVisitCard, JSON.stringify(visitCards))
 }
 
-// export const savePersistentVisitCard = ({ isGradient, gradientAngle, data, style, fontStyles }: ICardContext) => {
-//     const visitCard = {
-//         isGradient,
-//         gradientAngle,
-//         data,
-//         style,
-//         fontStyles,
-//     };
-//     console.log('Autosave visit card')
-//     sessionStorage.setItem(localStorageVisitCard, JSON.stringify(visitCard));
-// }
-
 const loadedVisitCardToContext = (visitCard: any, context: ICardContext) => {
   context.updateStyle(visitCard.style)
   context.updateData(visitCard.data)
@@ -78,15 +66,6 @@ const loadedVisitCardToContext = (visitCard: any, context: ICardContext) => {
   context.setGradientAngle(visitCard.gradientAngle)
   context.setLogo(visitCard.logo)
 }
-
-// export const loadPersistentVisitCard = (context: ICardContext) => {
-//     console.log('Try loading session visit card');
-//     const vCard = localStorage.getItem(localStorageVisitCard);
-//     if (vCard) {
-//         console.log('Found session visit card, loading...');
-//         loadedVisitCardToContext(JSON.parse(vCard), context);
-//     }
-// };
 
 export const loadVisitCard = (visitCardName: string, context: ICardContext) => {
   console.log(`Try loading ${visitCardName}`)

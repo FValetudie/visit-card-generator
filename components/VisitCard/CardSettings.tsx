@@ -22,13 +22,6 @@ export default function CardSettings() {
     addToast('Share link saved to clipboard', { appearance: 'info' })
   }, [visitCardCtx])
 
-  // useEffect(() => {
-  //     console.info('Setting up autosave');
-  //     loadVisitCard('visitCard_last', visitCardCtx);
-
-  //     setInterval(() => saveVisitCard('visitCard_last', visitCardCtx), 10000);
-  // }, []);
-
   return (
     <div className={cn(styles.cardSettings, { [styles.open]: isSettingsOpen })}>
       <span className={styles.toggleSettings} onClick={toggleIsSettingOpen}>
