@@ -1,13 +1,13 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react'
 
-import { listVisitCards } from "../utils";
+import { listVisitCards } from '../utils'
 
-import styles from "../visitCard.module.css";
+import styles from '../visitCard.module.css'
 
 interface CardListProps {
-  onClose: () => void;
-  onSelect: (val: string) => void;
-  isDisplayed?: boolean;
+  onClose: () => void
+  onSelect: (val: string) => void
+  isDisplayed?: boolean
 }
 
 export default function CardList({
@@ -15,14 +15,14 @@ export default function CardList({
   isDisplayed = false,
   onClose,
 }: CardListProps) {
-  const [list, setList] = useState<Array<string>>([]);
-  const [filter, setFilter] = useState<string>("");
+  const [list, setList] = useState<Array<string>>([])
+  const [filter, setFilter] = useState<string>('')
 
   useEffect(() => {
     if (isDisplayed) {
-      setList(listVisitCards());
+      setList(listVisitCards())
     }
-  }, [isDisplayed]);
+  }, [isDisplayed])
 
   return (
     <div
@@ -58,5 +58,5 @@ export default function CardList({
           ))}
       </div>
     </div>
-  );
+  )
 }

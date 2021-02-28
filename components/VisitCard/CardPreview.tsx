@@ -1,13 +1,13 @@
-import React, { useEffect, useMemo } from "react";
-import cn from "classnames";
+import React, { useEffect, useMemo } from 'react'
+import cn from 'classnames'
 
-import styles from "./visitCard.module.css";
-import { useCardContext } from "./CardContext";
-import { Email, Phone, Twitter } from "@material-ui/icons";
-import { openSharedVisitCard } from "./utils";
+import styles from './visitCard.module.css'
+import { useCardContext } from './CardContext'
+import { Email, Phone, Twitter } from '@material-ui/icons'
+import { openSharedVisitCard } from './utils'
 
 export default function CardPreview({ visitCard }: { visitCard?: string }) {
-  const visitCardCtx = useCardContext();
+  const visitCardCtx = useCardContext()
   const {
     data: { company, firstname, lastname, position, email, twitter, phone },
     logo,
@@ -15,12 +15,12 @@ export default function CardPreview({ visitCard }: { visitCard?: string }) {
     computedStyle,
     fontStyles,
     isSettingsOpen,
-  } = visitCardCtx;
+  } = visitCardCtx
   const isCardEdited = useMemo(() => company || firstname || lastname, [
     company,
     firstname,
     lastname,
-  ]);
+  ])
 
   const companyFontSize = useMemo(
     () =>
@@ -29,15 +29,15 @@ export default function CardPreview({ visitCard }: { visitCard?: string }) {
         0.025 * style.height
       ),
     [company, style.height, style.width]
-  );
+  )
 
-  const logoSize = useMemo(() => style.height / 4, [style.height]);
+  const logoSize = useMemo(() => style.height / 4, [style.height])
 
   useEffect(() => {
     if (visitCard && visitCard.length > 0) {
-      openSharedVisitCard(visitCard, visitCardCtx);
+      openSharedVisitCard(visitCard, visitCardCtx)
     }
-  }, [visitCard]);
+  }, [visitCard])
 
   return (
     <div
@@ -51,7 +51,7 @@ export default function CardPreview({ visitCard }: { visitCard?: string }) {
           className={cn(styles.card, styles.cardFront)}
           style={computedStyle}
         >
-          {logo && logo !== "" && (
+          {logo && logo !== '' && (
             <div
               className={styles.logo}
               style={{
@@ -83,7 +83,7 @@ export default function CardPreview({ visitCard }: { visitCard?: string }) {
           </p>
           <div className={styles.cardData}>
             <p className={styles.cardOwner}>
-              <span style={fontStyles?.fname}>{firstname}</span>{" "}
+              <span style={fontStyles?.fname}>{firstname}</span>{' '}
               <span style={fontStyles?.lname}>{lastname}</span>
             </p>
             <p className={styles.jobPosition}>
@@ -113,5 +113,5 @@ export default function CardPreview({ visitCard }: { visitCard?: string }) {
         </div>
       )}
     </div>
-  );
+  )
 }

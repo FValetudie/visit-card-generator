@@ -1,26 +1,26 @@
-import React, { useCallback } from "react";
-import cn from "classnames";
-import { Settings, Share } from "@material-ui/icons";
-import { useToasts } from "react-toast-notifications";
+import React, { useCallback } from 'react'
+import cn from 'classnames'
+import { Settings, Share } from '@material-ui/icons'
+import { useToasts } from 'react-toast-notifications'
 
-import { useCardContext } from "./CardContext";
-import { visitCardShareLink } from "./utils";
-import CardLoadSave from "./components/CardLoadSave";
-import CardDesign from "./components/CardDesign";
-import CardPersonalData from "./components/CardPersonalData";
+import { useCardContext } from './CardContext'
+import { visitCardShareLink } from './utils'
+import CardLoadSave from './components/CardLoadSave'
+import CardDesign from './components/CardDesign'
+import CardPersonalData from './components/CardPersonalData'
 
-import styles from "./visitCard.module.css";
+import styles from './visitCard.module.css'
 
 export default function CardSettings() {
-  const { addToast } = useToasts();
-  const visitCardCtx = useCardContext();
-  const { isSettingsOpen, toggleIsSettingOpen } = visitCardCtx;
+  const { addToast } = useToasts()
+  const visitCardCtx = useCardContext()
+  const { isSettingsOpen, toggleIsSettingOpen } = visitCardCtx
 
   const handleShare = useCallback(async () => {
-    const shareUrl = visitCardShareLink(visitCardCtx);
-    await navigator.clipboard.writeText(shareUrl);
-    addToast("Share link saved to clipboard", { appearance: "info" });
-  }, [visitCardCtx]);
+    const shareUrl = visitCardShareLink(visitCardCtx)
+    await navigator.clipboard.writeText(shareUrl)
+    addToast('Share link saved to clipboard', { appearance: 'info' })
+  }, [visitCardCtx])
 
   // useEffect(() => {
   //     console.info('Setting up autosave');
@@ -45,5 +45,5 @@ export default function CardSettings() {
         </div>
       </div>
     </div>
-  );
+  )
 }
