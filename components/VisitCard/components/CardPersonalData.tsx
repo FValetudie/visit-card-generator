@@ -1,6 +1,6 @@
-import React from 'react'
+import React from 'react';
 
-import CardTextInput from './CardTextInput'
+import CardTextInput from './CardTextInput';
 
 export default function CardPersonalData() {
   return (
@@ -14,5 +14,5 @@ export default function CardPersonalData() {
       <CardTextInput name="twitter" label="Twitter" />
       <CardTextInput name="phone" label="Phone" />
     </div>
-  )
+  );
 }

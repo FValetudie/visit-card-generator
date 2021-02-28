@@ -1,17 +1,17 @@
-import React from 'react'
+import React from 'react';
 
-import { useCardContext } from '../CardContext'
+import { useCardContext } from '../CardContext';
 
-import ColorPicker from '../../ColorPicker/ColorPicker'
-import { IFontStyles } from '../interfaces/ICardContext'
+import ColorPicker from '../../ColorPicker/ColorPicker';
+import { IFontStyles } from '../interfaces/ICardContext';
 
 interface CardTextInputProps {
-  label: string
-  name: keyof IFontStyles
+  label: string;
+  name: keyof IFontStyles;
 }
 
 export default function CardTextInput({ label, name }: CardTextInputProps) {
-  const { data, fontStyles, updateData, setFontStyles } = useCardContext()
+  const { data, fontStyles, updateData, setFontStyles } = useCardContext();
 
   return (
     <div>
@@ -32,5 +32,5 @@ export default function CardTextInput({ label, name }: CardTextInputProps) {
         onChange={(e) => updateData({ [name]: e.target.value })}
       />
     </div>
-  )
+  );
 }

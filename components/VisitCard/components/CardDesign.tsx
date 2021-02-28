@@ -1,10 +1,10 @@
-import React, { useCallback } from 'react'
+import React, { useCallback } from 'react';
 
-import { useCardContext } from '../CardContext'
+import { useCardContext } from '../CardContext';
 
-import ColorPicker from '../../ColorPicker/ColorPicker'
-import CardLogoInput from './CardLogoInput'
-import CardIntegerInput from './CardIntegerInput'
+import ColorPicker from '../../ColorPicker/ColorPicker';
+import CardLogoInput from './CardLogoInput';
+import CardIntegerInput from './CardIntegerInput';
 
 export default function CardDesign() {
   const {
@@ -14,14 +14,14 @@ export default function CardDesign() {
     setIsGradient,
     setGradientAngle,
     updateStyle,
-  } = useCardContext()
+  } = useCardContext();
 
   const handleGradientChange = useCallback(
     (elem: HTMLInputElement) => {
-      setIsGradient(elem.checked ?? false)
+      setIsGradient(elem.checked ?? false);
     },
     [setIsGradient, isGradient]
-  )
+  );
 
   return (
     <div className="card-style">
@@ -76,5 +76,5 @@ export default function CardDesign() {
         )}
       </div>
     </div>
-  )
+  );
 }

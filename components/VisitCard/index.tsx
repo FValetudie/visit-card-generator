@@ -1,15 +1,15 @@
-import React from 'react'
-import { ToastProvider } from 'react-toast-notifications'
+import React from 'react';
+import { ToastProvider } from 'react-toast-notifications';
 
-import { CardContextProvider } from './CardContext'
-import CardPreview from './CardPreview'
-import CardSettings from './CardSettings'
+import { CardContextProvider } from './CardContext';
+import CardPreview from './CardPreview';
+import CardSettings from './CardSettings';
 
-import styles from './visitCard.module.css'
+import styles from './visitCard.module.css';
 
 interface VisitCardProps {
-  displayOnly?: boolean
-  visitCard?: string
+  displayOnly?: boolean;
+  visitCard?: string;
 }
 
 export default function VisitCard({
@@ -29,5 +29,5 @@ export default function VisitCard({
         </CardContextProvider>
       </div>
     </ToastProvider>
-  )
+  );
 }

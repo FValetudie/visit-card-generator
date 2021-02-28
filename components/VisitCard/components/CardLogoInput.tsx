@@ -1,24 +1,24 @@
-import React, { Fragment, useCallback } from 'react'
-import { Delete } from '@material-ui/icons'
+import React, { Fragment, useCallback } from 'react';
+import { Delete } from '@material-ui/icons';
 
-import { useCardContext } from '../CardContext'
+import { useCardContext } from '../CardContext';
 
 export default function CardLogoInput() {
-  const { logo, setLogo } = useCardContext()
+  const { logo, setLogo } = useCardContext();
 
   const handleChangeLogo = useCallback((elem: HTMLInputElement) => {
-    const files = elem?.files
+    const files = elem?.files;
     if (files && files.length > 0) {
-      const file = files[0]
-      const reader = new FileReader()
+      const file = files[0];
+      const reader = new FileReader();
       reader.addEventListener('load', (e) => {
         if (typeof e?.target?.result === 'string') {
-          setLogo(e?.target?.result)
+          setLogo(e?.target?.result);
         }
-      })
-      reader.readAsDataURL(file)
+      });
+      reader.readAsDataURL(file);
     }
-  }, [])
+  }, []);
   return (
     <div>
       <label>Logo</label>
@@ -40,5 +40,5 @@ export default function CardLogoInput() {
         />
       )}
     </div>
-  )
+  );
 }

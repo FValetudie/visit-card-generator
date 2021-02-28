@@ -1,58 +1,58 @@
-import React, { useCallback, useRef, useState } from 'react'
-import { Restore, Save } from '@material-ui/icons'
-import { useToasts } from 'react-toast-notifications'
+import React, { useCallback, useRef, useState } from 'react';
+import { Restore, Save } from '@material-ui/icons';
+import { useToasts } from 'react-toast-notifications';
 
-import { loadVisitCard, saveVisitCard } from '../utils'
-import { useCardContext } from '../CardContext'
-import CardList from './CardList'
+import { loadVisitCard, saveVisitCard } from '../utils';
+import { useCardContext } from '../CardContext';
+import CardList from './CardList';
 
-import styles from '../visitCard.module.css'
+import styles from '../visitCard.module.css';
 
 export default function CardLoadSave() {
-  const visitCardNameRef = useRef<HTMLInputElement>(null)
+  const visitCardNameRef = useRef<HTMLInputElement>(null);
   const [displayVisitCardList, setDisplayVisitCardList] = useState<boolean>(
     false
-  )
-  const visitCardCtx = useCardContext()
-  const { addToast } = useToasts()
+  );
+  const visitCardCtx = useCardContext();
+  const { addToast } = useToasts();
 
   const toggleVisitCardList = useCallback(() => {
-    setDisplayVisitCardList(!displayVisitCardList)
-  }, [displayVisitCardList])
+    setDisplayVisitCardList(!displayVisitCardList);
+  }, [displayVisitCardList]);
 
   const handleSave = useCallback(() => {
-    const vcName = visitCardNameRef?.current?.value
+    const vcName = visitCardNameRef?.current?.value;
     if (vcName) {
-      saveVisitCard(vcName, visitCardCtx)
-      addToast('Visit card saved', { appearance: 'success' })
+      saveVisitCard(vcName, visitCardCtx);
+      addToast('Visit card saved', { appearance: 'success' });
     } else {
       addToast('Visit card name mandatory to save a visit card', {
         appearance: 'error',
-      })
+      });
     }
-  }, [visitCardNameRef, visitCardCtx])
+  }, [visitCardNameRef, visitCardCtx]);
 
   const handleLoad = useCallback(
     (vcName) => {
       if (vcName) {
         try {
-          loadVisitCard(vcName, visitCardCtx)
-          setDisplayVisitCardList(false)
+          loadVisitCard(vcName, visitCardCtx);
+          setDisplayVisitCardList(false);
           if (visitCardNameRef?.current) {
-            visitCardNameRef.current.value = vcName
+            visitCardNameRef.current.value = vcName;
           }
-          addToast('Visit card loaded', { appearance: 'success' })
+          addToast('Visit card loaded', { appearance: 'success' });
         } catch (e) {
-          addToast(e, { appearance: 'error' })
+          addToast(e, { appearance: 'error' });
         }
       } else {
         addToast('Please choose a valid visit card to load', {
           appearance: 'error',
-        })
+        });
       }
     },
     [visitCardCtx, visitCardNameRef]
-  )
+  );
 
   return (
     <div className={styles.cardLoadSave}>
@@ -83,5 +83,5 @@ export default function CardLoadSave() {
         />
       )}
     </div>
-  )
+  );
 }

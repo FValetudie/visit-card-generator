@@ -1,15 +1,15 @@
-import React from 'react'
-import cn from 'classnames'
+import React from 'react';
+import cn from 'classnames';
 
 interface CardIntegerInputProps {
-  label: string
-  name: 'width' | 'height' | 'gradientAngle'
-  className?: string
-  value: number
-  onChange: (val: number) => void
-  inline?: boolean
-  max?: number
-  min?: number
+  label: string;
+  name: 'width' | 'height' | 'gradientAngle';
+  className?: string;
+  value: number;
+  onChange: (val: number) => void;
+  inline?: boolean;
+  max?: number;
+  min?: number;
 }
 
 export default function CardIntegerInput({
@@ -38,5 +38,5 @@ export default function CardIntegerInput({
         />
       </div>
     </div>
-  )
+  );
 }
