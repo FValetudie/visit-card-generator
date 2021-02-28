@@ -1,0 +1,5 @@
+# Ignore artifacts:
+build
+.yarn
+.next
+node_modules

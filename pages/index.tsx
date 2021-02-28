@@ -1,23 +1,13 @@
-import React, { useEffect, useState } from 'react'
+import React from "react";
 
-import VisitCard from '../components/VisitCard';
+import VisitCard from "../components/VisitCard";
 
 export default function CreateVisitCard() {
-    const [visitCard, setVisitCard] = useState<string>();
-    const [displayOnly, setDisplayOnly] = useState<boolean>(false);
+  const params = new URLSearchParams(window.location.search);
+  const visitCardData = params.get("visitCard") || undefined;
+  const isShare = params.get("share");
 
-    useEffect(() => {
-        const params = new URLSearchParams(window.location.search);
-        const visitCardData = params.get('visitCard');
-        const isShare = params.get('share');
+  const displayOnly = (isShare ?? undefined) === "1";
 
-        setDisplayOnly((isShare ?? undefined) === '1');
-        if (visitCardData) {
-            setVisitCard(visitCardData);
-        }
-    }, []);
-    
-    return (
-        <VisitCard displayOnly={displayOnly} visitCard={visitCard} />
-    );
-};
+  return <VisitCard displayOnly={displayOnly} visitCard={visitCardData} />;
+}

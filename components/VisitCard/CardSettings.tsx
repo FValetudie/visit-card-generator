@@ -9,40 +9,41 @@ import CardLoadSave from "./components/CardLoadSave";
 import CardDesign from "./components/CardDesign";
 import CardPersonalData from "./components/CardPersonalData";
 
-import styles from './visitCard.module.css'
+import styles from "./visitCard.module.css";
 
 export default function CardSettings() {
-    const { addToast } = useToasts();
-    const visitCardCtx = useCardContext();
-    const {
-        isSettingsOpen,
-        toggleIsSettingOpen,
-    } = visitCardCtx;
+  const { addToast } = useToasts();
+  const visitCardCtx = useCardContext();
+  const { isSettingsOpen, toggleIsSettingOpen } = visitCardCtx;
 
-    const handleShare = useCallback(async () => {
-        const shareUrl = visitCardShareLink(visitCardCtx);
-        await navigator.clipboard.writeText(shareUrl);
-        addToast('Share link saved to clipboard', { appearance: 'info' });
-    }, [visitCardCtx]);
+  const handleShare = useCallback(async () => {
+    const shareUrl = visitCardShareLink(visitCardCtx);
+    await navigator.clipboard.writeText(shareUrl);
+    addToast("Share link saved to clipboard", { appearance: "info" });
+  }, [visitCardCtx]);
 
-    // useEffect(() => {
-    //     console.info('Setting up autosave');
-    //     loadVisitCard('visitCard_last', visitCardCtx);
+  // useEffect(() => {
+  //     console.info('Setting up autosave');
+  //     loadVisitCard('visitCard_last', visitCardCtx);
 
-    //     setInterval(() => saveVisitCard('visitCard_last', visitCardCtx), 10000);
-    // }, []);
+  //     setInterval(() => saveVisitCard('visitCard_last', visitCardCtx), 10000);
+  // }, []);
 
-    return (
-        <div className={cn(styles.cardSettings, { [styles.open]: isSettingsOpen })}>
-            <span className={styles.toggleSettings} onClick={toggleIsSettingOpen}>
-                <Settings fontSize="large" />
-            </span>
-            <div>
-                <CardPersonalData />
-                <CardDesign />
-                <CardLoadSave />
-                <div><button onClick={handleShare}><Share fontSize="inherit" /> Share</button></div>
-            </div>
+  return (
+    <div className={cn(styles.cardSettings, { [styles.open]: isSettingsOpen })}>
+      <span className={styles.toggleSettings} onClick={toggleIsSettingOpen}>
+        <Settings fontSize="large" />
+      </span>
+      <div>
+        <CardPersonalData />
+        <CardDesign />
+        <CardLoadSave />
+        <div>
+          <button onClick={handleShare}>
+            <Share fontSize="inherit" /> Share
+          </button>
         </div>
-    )
+      </div>
+    </div>
+  );
 }

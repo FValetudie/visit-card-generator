@@ -9,11 +9,13 @@ Date: 2021-02-10
 The app is already deployed on vercel, if you wish to try it : https://visit-card-generator.vercel.app/. Otherwise, follow the steps described thereafter.
 
 ### Clone the repository
+
 ```
 git clone git@github.com:FValetudie/visit-card-generator.git
 ```
 
 ### Launch Visit Card Generator
+
 ```
 cd visit-card-generator
 yarn install
@@ -21,6 +23,7 @@ yarn dev
 ```
 
 ### Test it
+
 Go to http://localhost:3000
 
 To create a visit card, you'll need to type in your information in the settings tab.
@@ -34,34 +37,50 @@ For a quick start, you can also test this [example visit card](http://localhost:
 ## Improvements
 
 ### URL shortener for sharing
+
 First improvement I would like to implement would be a prettier share URL.
 
 To do that, the first step could be using a compression method to get a shorter visit card data to insert in the URL. Already existing librabries can help achieve this : [JSONCrush](https://github.com/KilledByAPixel/JSONCrush), [json-url](https://github.com/masotime/json-url) using lzma compression, etc.
 
-Those compression methods can reduce the size of the data, but the gain stay marginal. Therefore, the actual solution to this problem would be to use  a URL shortener service. Some of them provide APIs to automatically create a short link (bitly, cuttly, tinyurl, etc.).
+Those compression methods can reduce the size of the data, but the gain stay marginal. Therefore, the actual solution to this problem would be to use a URL shortener service. Some of them provide APIs to automatically create a short link (bitly, cuttly, tinyurl, etc.).
 
 My choice would probably be google's [Firebase Dynamic Link](https://firebase.google.com/docs/dynamic-links/rest) which provides a rich API and monitoring.
 
 ### localStorage
+
 Browser API allowing to save data directly on the browser and retrieve it.
 It is used to save the visit cards.
 
 It is extremely easy to use, but could probably be replaced with [IndexedDB](https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API/Using_IndexedDB) which handles objects better and removes the necessity to serialize (stringify) our objects.
 
 ## Other ideas
+
 ### Responsive design
+
 Not too difficult: a specific. Design for the setting tab (or popup on mobile). The card preview would be slightly more difficult as the card size is editable.
+
 ### In-place editing
+
 Directly allow the user to edit their texts on the visit card could be a lighter experience. It would also leave only the styles to edit in the settings (though some could probably also be edited right next to the text: options visible on focus, for example).
+
 ### Text size
+
 Next to the color picker, a basic input allowing to change the font-size
+
 ### Persistent visit card
+
 I would also like to finish my failed attempt to have an automatic save of the current visit card that could be retrieved even after a refresh of the page. The same concept use to save/load visit cards could be used.
+
 ### Background images
+
 Allowing the user to choose a provided background image, or even to upload one (as done for the logo) would probably be simple to do. I did not take the time to implement it during this exercise, however. It would also be prefereable to have short URLs before as the image would be added to the visit card data.
+
 ### Tutorial
+
 A simple tutorial showing the user where to open the settings, how to change colors, where to save, load or share a visit card, etc.
+
 ### Prettier visit card load popup
+
 Each visit card available could have its own preview. This would need to save an image version of the visitCard, or creating modulable card preview
 
 Also, this popup could be more user-friendly, prettier, better with user experience...
@@ -69,17 +88,22 @@ Also, this popup could be more user-friendly, prettier, better with user experie
 ## What I would do differently is I started over
 
 ## Libraries and shortcuts
+
 To work on this exercise, I used several libraries.
 
 ### classnames
+
 I used this library to simplify the use of classs for my styles. Used with nextJS's style, it allows to activate or deactivate a class easily.
 
 ### Material icons
+
 [material.io](https://material.io/) is a typical design and icon library with thousand of icons available.
 
 ### react-color
+
 Package [react-color](https://github.com/casesandberg/react-color) is an easy way to add a color picker to a project.
 I created a container to allow displaying the current color and showing the colorpicker only when needed.
 
 ### react-toast-notifications
+
 Package [react-toast-notifications](https://github.com/jossmac/react-toast-notifications) is an implementation of toast-style notifications

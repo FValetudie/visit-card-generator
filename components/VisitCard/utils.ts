@@ -1,48 +1,61 @@
 import { ICardContext } from "./interfaces/ICardContext";
 
-const localStorageVisitCard = 'visitCards';
+const localStorageVisitCard = "visitCards";
 
 export const visitCardShareLink = (vCard: ICardContext) => {
-    const urlParam = new URLSearchParams();
-    const serializedVCard = serializeVisitCard(vCard);
-    const compressedVCard = btoa(serializedVCard);
+  const urlParam = new URLSearchParams();
+  const serializedVCard = serializeVisitCard(vCard);
+  const compressedVCard = btoa(serializedVCard);
 
-    urlParam.set('visitCard', compressedVCard);
-    urlParam.set('share', '1');
+  urlParam.set("visitCard", compressedVCard);
+  urlParam.set("share", "1");
 
-    return `http://localhost:3000/?${urlParam.toString()}`;
+  return `http://localhost:3000/?${urlParam.toString()}`;
 };
 
-export const openSharedVisitCard = (vCard: string, visitCardCtx: ICardContext) => {
-    const uncompressedVCard = atob(vCard);
-    const deserializedVCard = JSON.parse(uncompressedVCard);
-    loadedVisitCardToContext(deserializedVCard, visitCardCtx);
+export const openSharedVisitCard = (
+  vCard: string,
+  visitCardCtx: ICardContext
+) => {
+  const uncompressedVCard = atob(vCard);
+  const deserializedVCard = JSON.parse(uncompressedVCard);
+  loadedVisitCardToContext(deserializedVCard, visitCardCtx);
 };
 
-export const serializeVisitCard = ({ isGradient, gradientAngle, data, style, fontStyles, logo }: ICardContext) => {
-    return JSON.stringify({
-        isGradient,
-        gradientAngle,
-        data,
-        style,
-        fontStyles,
-        logo,
-    });
+export const serializeVisitCard = ({
+  isGradient,
+  gradientAngle,
+  data,
+  style,
+  fontStyles,
+  logo,
+}: ICardContext) => {
+  return JSON.stringify({
+    isGradient,
+    gradientAngle,
+    data,
+    style,
+    fontStyles,
+    logo,
+  });
 };
 
-export const saveVisitCard = (visitCardName: string, { isGradient, gradientAngle, data, style, fontStyles, logo }: ICardContext) => {
-    const vCards = localStorage.getItem(localStorageVisitCard);
-    const visitCards = vCards ? JSON.parse(vCards) : {};
-    delete visitCards[visitCardName];
-    visitCards[visitCardName] = {
-        isGradient,
-        gradientAngle,
-        data,
-        style,
-        fontStyles,
-        logo,
-    };
-    localStorage.setItem(localStorageVisitCard, JSON.stringify(visitCards));
+export const saveVisitCard = (
+  visitCardName: string,
+  { isGradient, gradientAngle, data, style, fontStyles, logo }: ICardContext
+) => {
+  const vCards = localStorage.getItem(localStorageVisitCard);
+  const visitCards = vCards ? JSON.parse(vCards) : {};
+  delete visitCards[visitCardName];
+  visitCards[visitCardName] = {
+    isGradient,
+    gradientAngle,
+    data,
+    style,
+    fontStyles,
+    logo,
+  };
+  localStorage.setItem(localStorageVisitCard, JSON.stringify(visitCards));
 };
 
 // export const savePersistentVisitCard = ({ isGradient, gradientAngle, data, style, fontStyles }: ICardContext) => {
@@ -58,12 +71,12 @@ export const saveVisitCard = (visitCardName: string, { isGradient, gradientAngle
 // }
 
 const loadedVisitCardToContext = (visitCard: any, context: ICardContext) => {
-    context.updateStyle(visitCard.style);
-    context.updateData(visitCard.data);
-    context.setFontStyles(visitCard.fontStyles);
-    context.setIsGradient(visitCard.isGradient);
-    context.setGradientAngle(visitCard.gradientAngle);
-    context.setLogo(visitCard.logo);
+  context.updateStyle(visitCard.style);
+  context.updateData(visitCard.data);
+  context.setFontStyles(visitCard.fontStyles);
+  context.setIsGradient(visitCard.isGradient);
+  context.setGradientAngle(visitCard.gradientAngle);
+  context.setLogo(visitCard.logo);
 };
 
 // export const loadPersistentVisitCard = (context: ICardContext) => {
@@ -76,27 +89,27 @@ const loadedVisitCardToContext = (visitCard: any, context: ICardContext) => {
 // };
 
 export const loadVisitCard = (visitCardName: string, context: ICardContext) => {
-    console.log(`Try loading ${visitCardName}`);
-    const vCard = localStorage.getItem(localStorageVisitCard);
-    if (!vCard) {
-        throw new Error('Unable to find specified visitCard');
-    }
-    const visitCards = JSON.parse(vCard);
-    if (visitCards[visitCardName]) {
-        const visitCard = visitCards[visitCardName];
-        loadedVisitCardToContext(visitCard, context)
-    } else {
-        throw new Error(`Unable to find specified visitCard "${visitCardName}"`);
-    }
+  console.log(`Try loading ${visitCardName}`);
+  const vCard = localStorage.getItem(localStorageVisitCard);
+  if (!vCard) {
+    throw new Error("Unable to find specified visitCard");
+  }
+  const visitCards = JSON.parse(vCard);
+  if (visitCards[visitCardName]) {
+    const visitCard = visitCards[visitCardName];
+    loadedVisitCardToContext(visitCard, context);
+  } else {
+    throw new Error(`Unable to find specified visitCard "${visitCardName}"`);
+  }
 };
 
 export const listVisitCards = () => {
-    const visitCards = localStorage.getItem(localStorageVisitCard);
-    if (visitCards) {
-        const visitCardsObj = JSON.parse(visitCards);
-        if (visitCardsObj && typeof visitCardsObj === "object") {
-            return Object.keys(visitCardsObj).filter(s => s !== 'visitCard_last');
-        } 
+  const visitCards = localStorage.getItem(localStorageVisitCard);
+  if (visitCards) {
+    const visitCardsObj = JSON.parse(visitCards);
+    if (visitCardsObj && typeof visitCardsObj === "object") {
+      return Object.keys(visitCardsObj).filter((s) => s !== "visitCard_last");
     }
-    return [];
+  }
+  return [];
 };
