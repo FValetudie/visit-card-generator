@@ -1,3 +1,7 @@
+.MuiSvgIcon-root {
+  vertical-align: middle;
+}
+
 .cardContainer {
   height: 100%;
   position: relative;
