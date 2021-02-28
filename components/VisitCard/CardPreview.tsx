@@ -83,8 +83,8 @@ export default function CardPreview({ visitCard }: { visitCard?: string }) {
           </p>
           <div className={styles.cardData}>
             <p className={styles.cardOwner}>
-              <span style={fontStyles?.fname}>{firstname}</span>{' '}
-              <span style={fontStyles?.lname}>{lastname}</span>
+              <span style={fontStyles?.firstname}>{firstname}</span>{' '}
+              <span style={fontStyles?.lastname}>{lastname}</span>
             </p>
             <p className={styles.jobPosition}>
               <span style={fontStyles?.position}>{position}</span>

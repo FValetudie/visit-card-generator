@@ -44,8 +44,8 @@ export function CardContextProvider({ children }: { children: ReactNode }) {
   })
   const [fontStyles, setFontStyles] = useState<IFontStyles>({
     email: defaultFontStyle,
-    fname: defaultFontStyle,
-    lname: defaultFontStyle,
+    firstname: defaultFontStyle,
+    lastname: defaultFontStyle,
     phone: defaultFontStyle,
     twitter: defaultFontStyle,
     company: { color: '#a00' },
