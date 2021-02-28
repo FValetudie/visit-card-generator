@@ -85,8 +85,6 @@ Each visit card available could have its own preview. This would need to save an
 
 Also, this popup could be more user-friendly, prettier, better with user experience...
 
-## What I would do differently is I started over
-
 ## Libraries and shortcuts
 
 To work on this exercise, I used several libraries.
